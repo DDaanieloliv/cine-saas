@@ -24,6 +24,7 @@ body {
   /* Colors — Blacks */
   --soft-black: #1a1a1a;
   --pure-black: #000000;
+  --black-transparent-1: #0000000F;
 
   /* Colors — Grays */
   --gray: #6b6b6b;
@@ -36,5 +37,6 @@ body {
   --font-sans: "Inter", system-ui, sans-serif;
 
   /* Typography — Barcode */
+  --font-barcode-letter: "Libre Barcode 39 Extended", cursive;
   --font-barcode: "Libre Barcode 39 Extended Text", cursive;
 }

@@ -6,9 +6,18 @@
       <app-navigation-option />
     </div>
     <div class="search_container">
-      <a href="" aria-label="Pesquisar">
-        <i class="bi bi-search"></i>
-      </a>
+      <input
+         [class.visible]="showInput"
+         type=""
+         name="Search..."
+         value="Search..."
+         >
+     <form>
+        <i
+          class="bi bi-search"
+          (click)="launchInputElement()"
+          ></i>
+     </form>
     </div>
 
   </div>

@@ -10,12 +10,14 @@ export class RowSection implements AfterViewInit, OnDestroy {
 
   private frameId: number | null = null;
 
+
   constructor(
     private elementRef: ElementRef<HTMLElement>
   ) {}
 
   ngAfterViewInit(): void {
     this.updateRowOpacities();
+    this.updateAllRowControls();
   }
 
   ngOnDestroy(): void {
@@ -24,6 +26,50 @@ export class RowSection implements AfterViewInit, OnDestroy {
     }
   }
 
+  protected rowControls: Record<
+  number,
+  {
+    canScrollLeft: boolean;
+    canScrollRight: boolean;
+  }
+  > = {};
+
+  protected updateRowControls(
+    viewport: HTMLElement,
+    rowId: number
+  ): void {
+    const maxScrollLeft =
+      viewport.scrollWidth - viewport.clientWidth;
+
+    this.rowControls = {
+      ...this.rowControls,
+      [rowId]: {
+        canScrollLeft: viewport.scrollLeft > 0,
+        canScrollRight:
+          viewport.scrollLeft < maxScrollLeft - 1
+      }
+    };
+  }
+
+  private updateAllRowControls(): void {
+    const viewports =
+      this.elementRef.nativeElement.querySelectorAll<HTMLElement>(
+        '.row_viewport'
+    );
+
+    viewports.forEach(viewport => {
+      const rowId = Number(viewport.dataset['rowId']);
+
+      if (Number.isFinite(rowId)) {
+        this.updateRowControls(viewport, rowId);
+      }
+    });
+  }
+
+  @HostListener('window:resize')
+  protected onWindowResize(): void {
+    this.updateAllRowControls();
+  }
 
   @HostListener('window:scroll')
   @HostListener('window:resize')

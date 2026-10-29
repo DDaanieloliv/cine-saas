@@ -7,47 +7,46 @@
           <section class="related">
 
             <div class="related_head" id="">
-
               <h2 class="label related_heading">
                 {{ block.related_head }}
               </h2>
-
-              <div class="row_controls">
-                <button
-                  type="button"
-                  class="row_button"
-                  aria-label="Ver filmes anteriores"
-                  (click)="scrollRow(rowViewport, -1)"
-                >
-                  <i class="bi bi-chevron-left"></i>
-                </button>
-                <button
-                  type="button"
-                  class="row_button"
-                  aria-label="Ver próximos filmes"
-                  (click)="scrollRow(rowViewport, 1)"
-                >
-                  <i class="bi bi-chevron-right"></i>
-                </button>
-              </div>
-
             </div>
 
             <!-- Carousel Component -->
             <div class="row_scroller" id="">
-              <div class="row_viewport" #rowViewport>
+              @if (rowControls[block.id]?.canScrollLeft) {
+                <button
+                  type="button"
+                  class="btn_left row_button"
+                  aria-label="Ver filmes anteriores"
+                  (click)="scrollRow(rowViewport, -1)"
+                  >
+                  <i class="bi bi-chevron-left"></i>
+                  </button>
+              }
+              <div class="row_viewport" [attr.data-row-id]="block.id" (scroll)="updateRowControls(rowViewport, block.id)" #rowViewport>
                 <div class="related_grid" id="">
                   @for (title of block.related_titles; track title.id) {
-                    <a class="poster_card" href="">
-                      <div class="poster_card_image">
-                        <picture>
-                          <img src="" alt="{{title.type}}  -  {{title.title}}">
-                        </picture>
-                      </div>
-                    </a>
+                      <a class="poster_card" href="">
+                        <div class="poster_card_image">
+                          <picture>
+                            <img src="" alt="{{title.type}}  -  {{title.title}}">
+                          </picture>
+                        </div>
+                      </a>
                   }
                 </div>
               </div>
+              @if (rowControls[block.id]?.canScrollRight) {
+                <button
+                  type="button"
+                  class="btn_right row_button"
+                  aria-label="Ver próximos filmes"
+                  (click)="scrollRow(rowViewport, 1)"
+                  >
+                  <i class="bi bi-chevron-right"></i>
+                  </button>
+              }
             </div>
 
           </section>

@@ -54,9 +54,9 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      aspect-ratio: 2 / 3;
+      aspect-ratio: 16 / 0;
       width: 100%;
-      max-width: 290px;
+      max-width: 100% /* 290px */;
       margin: 0 auto;
     }
   }
@@ -117,7 +117,7 @@
   letter-spacing: .12em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 4px 14px #00000026;
+  box-shadow: 0 0px 0px var(--pure-black);
   transition: transform .2s,background .2s;
 
   &:hover {
