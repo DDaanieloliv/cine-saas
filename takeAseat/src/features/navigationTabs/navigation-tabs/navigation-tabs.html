@@ -1,9 +1,0 @@
-<div class="tab-container">
-  <div *ngFor="let entity of gridList; trackBy: trackByGridId"
-    class="tab-window"
-    [class.selected]="isTabSelected(entity)"
-    (click)="selectTab(entity)"
-  >
-    Room {{getRoomDisplayNumber(entity)}}
-  </div>
-</div>
