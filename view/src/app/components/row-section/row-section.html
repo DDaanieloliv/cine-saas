@@ -1,0 +1,59 @@
+<section class="row_section">
+  <div class="container" id="">
+    <div class="data_rows_container" id="">
+
+      @for (block of blocks; track block.id) {
+        <div class="row_block" id="">
+          <section class="related">
+
+            <div class="related_head" id="">
+
+              <h2 class="label related_heading">
+                {{ block.related_head }}
+              </h2>
+
+              <div class="row_controls">
+                <button
+                  type="button"
+                  class="row_button"
+                  aria-label="Ver filmes anteriores"
+                  (click)="scrollRow(rowViewport, -1)"
+                >
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <button
+                  type="button"
+                  class="row_button"
+                  aria-label="Ver próximos filmes"
+                  (click)="scrollRow(rowViewport, 1)"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Carousel Component -->
+            <div class="row_scroller" id="">
+              <div class="row_viewport" #rowViewport>
+                <div class="related_grid" id="">
+                  @for (title of block.related_titles; track title.id) {
+                    <a class="poster_card" href="">
+                      <div class="poster_card_image">
+                        <picture>
+                          <img src="" alt="{{title.type}}  -  {{title.title}}">
+                        </picture>
+                      </div>
+                    </a>
+                  }
+                </div>
+              </div>
+            </div>
+
+          </section>
+        </div>
+      }
+
+    </div>
+  </div>
+</section>

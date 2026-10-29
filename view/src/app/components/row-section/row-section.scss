@@ -1,0 +1,137 @@
+:host {
+  display: block;
+  transition: opacity 500ms ease;
+}
+
+:host(.is-focused) {
+  opacity: 1;
+}
+
+.row_section {
+  padding: 16px 0 0;
+
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+}
+
+.row_block {
+  transition: opacity .55s cubic-bezier(.2,.7,.2,1);
+  margin-bottom: 42px;
+}
+
+.related_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+
+  .related_heading {
+    margin: 0;
+    font-family: var(--font-editorial-alt);
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+    text-transform: none;
+    color: var(--pure-black);
+    font-weight: 500;
+  }
+}
+
+
+.row_controls {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.row_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  border: 1px solid var(--pure-black);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--pure-black);
+
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, opacity 200ms ease;
+
+  &:hover {
+    background-color: var(--pure-black);
+    color: var(--warm-white);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--pure-black);
+    outline-offset: 3px;
+  }
+
+  i {
+    font-size: 16px;
+  }
+}
+
+
+.row_scroller {
+  transition: opacity 250ms linear;
+
+  .row_viewport {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    padding: 14px 0 24px;
+
+    .related_grid {
+      display: flex !important;
+      gap: 10px;
+      width: max-content;
+      will-change: transform;
+      transition: transform .78s cubic-bezier(.22,1,.36,1);
+
+      a {
+        flex: 0 0 260px;
+        min-width: 0;
+      }
+
+      .poster_card {
+        text-decoration: none;
+        color: inherit;
+        flex: 0 0 260px;
+        display: block;
+        transition: transform .25s cubic-bezier(.22,.61,.36,1);
+
+        .poster_card_image {
+          aspect-ratio: 2 / 3;
+          background: var(--gray);
+          color: var(--gray);
+          overflow: hidden;
+          border-radius: 4px;
+          box-shadow: 0 6px 18px -8px var(--pure-black);
+          transition: box-shadow .25s ease;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 720px) {
+  .rows-section .row-viewport {
+    overflow-x: clip;
+    overflow-y: visible;
+    overflow-clip-margin: 12px;
+    scrollbar-width: none;
+  }
+}

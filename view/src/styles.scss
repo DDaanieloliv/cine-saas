@@ -1,0 +1,40 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--warm-white);
+}
+
+:root {
+  /* Colors — Warm neutrals */
+  --warm-white: #faf7f2;;
+  --warm-white-10: #f6f3ee;
+  --warm-beige: #e0d8cc;
+
+  /* Colors — Blacks */
+  --soft-black: #1a1a1a;
+  --pure-black: #000000;
+
+  /* Colors — Grays */
+  --gray: #6b6b6b;
+
+  /* Typography — Editorial */
+  --font-editorial: "Playfair Display", serif;
+  --font-editorial-alt: "Newsreader", Georgia, serif;
+
+  /* Typography — Sans-serif */
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Typography — Barcode */
+  --font-barcode: "Libre Barcode 39 Extended Text", cursive;
+}

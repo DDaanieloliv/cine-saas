@@ -1,0 +1,24 @@
+<a href="/">
+  <svg
+    class="search_icon_looking search-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    aria-label="Pesquisar"
+    role="img"
+  >
+    <circle
+      cx="10"
+      cy="10"
+      r="6"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+    />
+    <path
+      d="M14.5 14.5 L20 20"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+    />
+  </svg>
+</a>
