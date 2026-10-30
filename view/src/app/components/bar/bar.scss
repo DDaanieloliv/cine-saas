@@ -80,13 +80,19 @@
   }
 }
 
-.brand_looking {
-  text-decoration: none;
-  font-family: var(--font-barcode);
-  color: var(--pure-black);
-  font-size: 2rem;
-  font-weight: 400;
 
+.brand_container {
+  position: relative;
+  width: 140px;
+
+  .brand_looking {
+    text-decoration: none;
+    font-family: var(--font-barcode);
+    color: var(--pure-black);
+    font-size: 2rem;
+    font-weight: 400;
+
+    position: absolute;
+    transform: translateY(-42%);
+  }
 }
-
-

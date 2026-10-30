@@ -1,0 +1,14 @@
+<div class="hero_stack" id="">
+  @for (card of stack; track card.id; let i = $index) {
+  <a
+    class="hero_stack_card"
+    [attr.data_position]="handleCardPosition(i)"
+    href=""
+    >
+    <picture>
+      <source srcset="" media="(min-width: 601px)"/><img src="" alt="">
+    </picture>
+    <span></span>
+  </a>
+  }
+</div>

@@ -1,0 +1,16 @@
+<section class="hero">
+  <div class="hero_inner" id="">
+
+    <app-hero-text />
+
+    <app-hero-stack />
+
+  </div>
+  <button
+    class="back_to_top regular-btn btn btn-primary"
+    [class.visible]="showButton"
+    (click)="scrollToTop()"
+    >
+    ↑ Back to top
+  </button>
+</section>

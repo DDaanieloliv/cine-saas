@@ -27,8 +27,9 @@ body {
   --black-transparent-1: #0000000f;
 
   /* Colors — Browns */
-  --dark-brown-transparent-1: #14100c59;
-  --dark-brown-transparent-2: #14100c1a;
+  --dark-brown-transparent-1: #14100c59; /* 35% */
+  --dark-brown-transparent-2: #14100c1a; /* 10% */
+  --dark-brown-transparent-3: #14100cb8; /* 72% */
 
   /* Colors — Grays */
   --gray: #6b6b6b;
@@ -41,6 +42,6 @@ body {
   --font-sans: "Inter", system-ui, sans-serif;
 
   /* Typography — Barcode */
-  --font-barcode-letter: "Libre Barcode 39 Extended", cursive;
-  --font-barcode: "Libre Barcode 39 Extended Text", cursive;
+  --font-barcode: "Libre Barcode 39 Extended", cursive;
+  --font-barcode-letter: "Libre Barcode 39 Extended Text", cursive;
 }

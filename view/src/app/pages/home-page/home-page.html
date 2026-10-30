@@ -1,46 +1,4 @@
-<section class="hero">
-  <div class="hero_inner" id="">
-
-    <div class="hero_text" id="">
-      <h1 class="hero_text_h1">
-        See Your Favorits,
-        <br>
-        Series & Films.
-      </h1>
-      <p class="hero_paragraf">
-        Improved with a exceptional effort, to prove that sometimes is possible,
-        <br>
-        even when all say the opposite, always one step at a time
-      </p>
-      <div class="hero_options" id="">
-        <a href="" class="regular-btn btn btn-primary">Browse All Titles</a>
-        <a href="" class="hide-btn btn btn-outline-light">Desired Picks</a>
-      </div>
-    </div>
-
-    <div class="hero_stack" id="">
-      @for (card of stack; track card.id; let i = $index) {
-        <a
-          class="hero_stack_card"
-          [attr.data_position]="handleCardPosition(i)"
-          href="">
-          <picture>
-            <source srcset="" media="(min-width: 601px)"/><img src="" alt="">
-          </picture>
-          <span></span>
-        </a>
-      }
-    </div>
-
-  </div>
-  <button
-    class="back_to_top regular-btn btn btn-primary"
-    [class.visible]="showButton"
-    (click)="scrollToTop()"
-    >
-    ↑ Back to top
-  </button>
-</section>
+<app-hero />
 
 <app-row-section />
 
