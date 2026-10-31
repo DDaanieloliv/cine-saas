@@ -1,1 +1,30 @@
-<p>browse-page works!</p>
+<main class="container">
+  <div class="" id="">
+    <div class="browse_tabs" id="">
+      <button
+        (click)="tabSelected('All')"
+        [class.active_all]="selectedTab === 'All'"
+        class="tab"
+        type="tab"
+      >All</button>
+      <button
+        (click)="tabSelected('Films')"
+        [class.active_films]="selectedTab === 'Films'"
+        class="tab"
+        type="tab"
+      >Films</button>
+      <button
+        (click)="tabSelected('Series')"
+        [class.active_series]="selectedTab === 'Series'"
+        class="tab"
+        type="tab"
+      >Series</button>
+    </div>
+    <div class="filters" id="">
+
+    </div>
+    <div class="content_grid" id="">
+
+    </div>
+  </div>
+</main>
