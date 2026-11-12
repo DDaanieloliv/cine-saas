@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
+import { BrowseTabs } from '../../components/browse-tabs/browse-tabs';
+import { BrowseFilters } from '../../components/browse-filters/browse-filters';
 
 @Component({
-  imports: [],
+  imports: [ BrowseTabs, BrowseFilters ],
   selector: 'app-browse-page',
   styleUrl: './browse-page.scss',
   templateUrl: './browse-page.html',
 })
-export class BrowsePage {
-
-  protected selectedTab = 'All';
-
-  protected tabSelected(value: string) :void  {
-    this.selectedTab = value;
-  }
-}
+export class BrowsePage {}
