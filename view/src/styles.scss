@@ -15,6 +15,12 @@ body {
   background-color: var(--warm-white);
 }
 
+app-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 :root {
   /* Colors — Warm neutrals */
   --warm-white: #faf7f2;;

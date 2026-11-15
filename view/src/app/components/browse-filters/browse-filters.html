@@ -1,24 +1,22 @@
 <div class="browse_filters" id="">
   <input class="filter_search" type="" name="search" value="Search...">
   <div class="search_settings" id="">
-    <select>
-      <option value="All Countries">All Countries</option>
-    </select>
-    <select>
-      <option value="All Gernes">All Gernes</option>
-    </select>
-    <select>
-      <option value="All Languages">All Languages</option>
-    </select>
-    <select>
-      <option value="All Decades">All Decades</option>
-    </select>
+    @for (filter of filter_select; track filter.id) {
+
+      <select>
+        @for (option of filter.options; track option.id) {
+        <option value="{{option.option}}">{{option.option}}</option>
+        }
+      </select>
+    }
     <button type="button" class="regular-btn btn btn-primary">Most Desired Picks</button>
     <div class="spacing" id=""></div>
     <label for="">  Sort By
       <select>
-        <option value="Year">Year</option>
+        <option value="year">Year ↓</option>
+        <option value="year">Year ↑</option>
       </select>
     </label>
   </div>
+  <p>N° titles</p>
 </div>

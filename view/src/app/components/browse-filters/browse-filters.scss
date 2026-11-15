@@ -1,5 +1,5 @@
 .browse_filters {
-
+  margin-bottom: 32px;
 
   .filter_search {
     width: 100%;
@@ -31,6 +31,18 @@
       cursor: pointer;
     }
 
+    label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray);
+      white-space: nowrap;
+    }
+
     .btn {
       border-radius: 0;
       border: 1px solid var(--warm-beige);
@@ -55,8 +67,11 @@
       align-self: center;
       background: var(--warm-beige);
     }
+  }
 
-    p {
-    }
+  p {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--gray)
   }
 }
