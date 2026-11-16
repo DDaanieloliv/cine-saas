@@ -9,7 +9,23 @@
         }
       </select>
     }
-    <button type="button" class="regular-btn btn btn-primary">Most Desired Picks</button>
+    <button
+      (click)="showClearButtom()"
+      type="button"
+      class="regular-btn btn btn-primary"
+      >
+      Most Desired Picks
+    </button>
+    <button
+      type="button"
+      (click)="showClearButtom()"
+      class="clear_option"
+      [class.regular-btn]="shouldClearFilters"
+      [class.btn]="shouldClearFilters"
+      [class.btn-primary]="shouldClearFilters"
+      >
+      ✕ Clear
+    </button>
     <div class="spacing" id=""></div>
     <label for="">  Sort By
       <select>

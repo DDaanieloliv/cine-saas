@@ -7,6 +7,13 @@ import { Component } from '@angular/core';
   templateUrl: './browse-filters.html',
 })
 export class BrowseFilters {
+
+  protected shouldClearFilters = false;
+
+  protected showClearButtom() {
+    this.shouldClearFilters = !this.shouldClearFilters;
+  }
+
   protected filter_select = [
     {
       id: 1,

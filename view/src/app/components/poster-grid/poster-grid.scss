@@ -12,6 +12,10 @@
     cursor: pointer;
     transition: transform .25s cubic-bezier(.22,.61,.36,1);
 
+    &:hover {
+      transform: scale(1.035);
+    }
+
 
     .poster_card_image {
       position: relative;

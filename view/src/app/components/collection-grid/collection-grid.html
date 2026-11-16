@@ -1,0 +1,23 @@
+<div class="collection_grid" id="">
+
+  @for ( collection of collections; track collection.id ) {
+    <div
+      class="collection_card" id=""
+    >
+      <div class="collection_card_image" id=""></div>
+      <div
+        class="collection_card_panel" id=""
+        [style.--panel-background]="collection.palette.background"
+        [style.--panel-text]="collection.palette.text"
+        [style.--panel-label]="collection.palette.label"
+        [style.--panel-label-opacity]="collection.palette.labelOpacity"
+        [style.--panel-count-opacity]="collection.palette.countOpacity"
+      >
+        <span class="collection_card_label">collection</span>
+        <span class="collection_card_name">{{collection.name}}</span>
+        <span class="collection_card_count">{{collection.count}}</span>
+      </div>
+    </div>
+  }
+
+</div>

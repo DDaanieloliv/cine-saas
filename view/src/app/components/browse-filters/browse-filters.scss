@@ -22,6 +22,10 @@
     margin-bottom: 12px;
     gap: 10px;
 
+    .clear_option {
+      display: none;
+    }
+
     select {
       font-family: var(--font-sans);
       border: 1px solid var(--warm-beige);
@@ -57,6 +61,11 @@
         border-color: 10px solid var(--pure-black);
         box-shadow: 2px 2px 2px 1px var(--pure-black);
         color: #000;
+
+      }
+
+      &.clear_option {
+        display: block;
       }
     }
 
