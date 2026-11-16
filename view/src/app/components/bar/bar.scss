@@ -14,7 +14,7 @@
 }
 
 :host(.is_scrolled) {
-  background: color-mix( in srgb, var(--cream) 82%, transparent );
+  background: color-mix( in srgb, var(--warm-white) 82%, transparent );
   -webkit-backdrop-filter: saturate(140%) blur(20px);
   backdrop-filter: saturate(140%) blur(20px);
 
