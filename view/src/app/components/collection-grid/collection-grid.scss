@@ -1,7 +1,51 @@
 .collection_grid {
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
-  gap: 24px;
+  gap: 30px;
+
+  .backcard_container {
+    position: relative;
+
+    .back_card0 {
+      background: var(--gray);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: transform .18s ease;
+
+      border-radius: 5px;
+      border: 1px solid var(--pure-black);
+      box-shadow: 0 5px 10px -6px var(--dark-brown-transparent-1) ,0 6px 6px -2px var(--dark-brown-transparent-2);
+      z-index: -1;
+    }
+
+    .back_card1 {
+      background: var(--gray);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: transform .18s ease;
+
+      border-radius: 5px;
+      border: 1px solid var(--pure-black);
+      box-shadow: 0 5px 10px -6px var(--dark-brown-transparent-1) ,0 6px 6px -2px var(--dark-brown-transparent-2);
+      z-index: -1;
+    }
+
+
+    &:hover {
+      transform: translateY(-2px);
+
+      .back_card0 {
+        transform: rotate(4deg) translateY(10px) translateX(14px);
+      }
+
+      .back_card1 {
+        transform: rotate(2deg) translateY(10px) translateX(7px);
+      }
+
+    }
+  }
 
   .collection_card {
     display: grid;
@@ -12,11 +56,8 @@
     transition: transform .18s ease;
     text-decoration: none;
     cursor: pointer;
+    z-index: 2;
     transition: transform .25s cubic-bezier(.22,.61,.36,1);
-
-    &:hover {
-      transform: translateY(-2px);
-    }
 
     .collection_card_image {
       background-size: cover;

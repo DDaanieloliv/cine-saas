@@ -1,0 +1,13 @@
+<div class="blog_grid" id="">
+  @for (post of editorial; track post.id) {
+  <a class="editorial_card" href="">
+    <div class="editorial_card_image" id="">
+      <picture></picture>
+    </div>
+    <div class="editorial_card_body" id="">
+      <h3 class="editorial_card_title">{{post.news}}</h3>
+      <p class="editorial_card_meta">{{post.published}} · {{post.author}}</p>
+    </div>
+  </a>
+  }
+</div>

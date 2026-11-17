@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { BlogGrid } from '../../components/blog-grid/blog-grid';
 
 @Component({
-  imports: [],
+  imports: [ BlogGrid ],
   selector: 'app-blog-page',
   styleUrl: './blog-page.scss',
   templateUrl: './blog-page.html',
