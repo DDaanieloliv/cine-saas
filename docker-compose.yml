@@ -3,3 +3,14 @@
 # Production infrastructure.
 #
 ##
+
+services:
+  db:
+    image: mongodb/mongodb-community-server
+    ports:
+      - "127.0.0.1:${HOST_PORT}:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data: 
