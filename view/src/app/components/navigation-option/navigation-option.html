@@ -2,7 +2,12 @@
   <a
     [routerLink]="'/' +  option.name.toLowerCase()"
     routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      queryParams: 'ignored',
+      matrixParams: 'ignored',
+      fragment: 'ignored'
+    }"
     class="option_looking"
   >
     {{option.name}}

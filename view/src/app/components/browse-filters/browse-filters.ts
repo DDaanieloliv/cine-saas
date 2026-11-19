@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   imports: [],
@@ -12,6 +12,17 @@ export class BrowseFilters {
 
   protected showClearButtom() {
     this.shouldClearFilters = !this.shouldClearFilters;
+  }
+
+  @Input('preset')
+  set preset(value: string | null) {
+    if (value === 'desired-picks') {
+      this.activateDesiredPicks();
+    }
+  }
+
+  protected activateDesiredPicks() {
+    this.shouldClearFilters = true;
   }
 
   protected filter_select = [
