@@ -40,6 +40,22 @@
         color: #fff;
         padding: 2px 6px;
       }
+
+      .poster_card_choosed_by_editor {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        background: #fdf6e3;
+        color: #8a6c2a;
+        border: 1px solid #e0c97a;
+        font-family: var(--font-sans);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        padding: 3px 7px;
+        line-height: 1;
+      }
     }
 
     .poster_card_info {

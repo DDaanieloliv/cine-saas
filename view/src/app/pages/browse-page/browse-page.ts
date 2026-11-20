@@ -21,4 +21,35 @@ export class BrowsePage {
       this.preset = params.get('preset');
     })
   }
+
+  public matchBySearch: string = '';
+  public matchByCountry: string = '';
+  public matchByGenre: string = '';
+  public matchByLanguage: string = '';
+  public matchByDecade: string = '';
+  public isChoosedByEditor: boolean = false;
+  public yearDescendin: boolean = true;
+
+
+  public updateBySearch(value: string) {
+    this.matchBySearch = value;
+  }
+  public updateByCountry(value: string) {
+    this.matchByCountry = value;
+  }
+  public updateByGenre(value: string) {
+    this.matchByGenre = value;
+  }
+  public updateByLanguage(value: string) {
+    this.matchByLanguage = value;
+  }
+  public updateByDecade(value: string) {
+    this.matchByDecade = value;
+  }
+  public updateChoosedByEditor(value: boolean) {
+    this.isChoosedByEditor = value;
+  }
+  public updateYearDescendin(value: boolean) {
+    this.yearDescendin = value;
+  }
 }

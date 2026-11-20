@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   imports: [],
@@ -20,6 +20,36 @@ export class BrowseFilters {
       this.activateDesiredPicks();
     }
   }
+
+  public filterChange(filter_name: string, event: Event) {
+    const select = event.target as HTMLSelectElement;
+
+    switch (filter_name) {
+      case 'By Country':
+        break;
+      case 'By Genre':
+        break;
+      case 'By Language':
+        break;
+      case 'By Decade':
+        break;
+    }
+  }
+
+  @Output()
+  public searchContent: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  public selectedCountry: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  public selectedGenre: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  public selectedLanguage: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  public selectedDecade: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  public isChoosedByEditor: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  public selectedYearOrder: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   protected activateDesiredPicks() {
     this.shouldClearFilters = true;

@@ -2,10 +2,14 @@
   <input class="filter_search" type="" name="search" value="Search...">
   <div class="search_settings" id="">
     @for (filter of filter_select; track filter.id) {
-
-      <select>
+      <select (change)="filterChange(filter.filter_name, $event)">
         @for (option of filter.options; track option.id) {
-        <option value="{{option.option}}">{{option.option}}</option>
+        <option
+          [value]="option.option"
+          value="{{option.option}}"
+        >
+          {{option.option}}
+        </option>
         }
       </select>
     }

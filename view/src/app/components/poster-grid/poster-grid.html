@@ -1,10 +1,13 @@
 <div class="poster_grid" id="">
 
-  @for (poster of posters; track poster.id) {
+  @for (poster of contents(); track poster.id) {
     <a class="poster_card" href="">
       <div class="poster_card_image" id="">
         <picture class="picture"></picture>
         <span class="poster_card_type">{{poster.type}}</span>
+        @if (poster.editor_pick){
+          <span class="poster_card_choosed_by_editor">• Choosed By Editor</span>
+        }
       </div>
       <div class="poster_card_info" id="">
         <p class="poster_card_title">{{poster.poster_title}}</p>

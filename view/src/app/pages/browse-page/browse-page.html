@@ -1,7 +1,24 @@
 <main class="container" id="">
   <app-browse-tabs />
 
-  <app-browse-filters [preset]="preset" />
+  <app-browse-filters
+    [preset]="preset"
+    (searchContent)="updateBySearch($event)"
+    (selectedCountry)="updateByCountry($event)"
+    (selectedGenre)="updateByGenre($event)"
+    (selectedLanguage)="updateByLanguage($event)"
+    (selectedDecade)="updateByDecade($event)"
+    (isChoosedByEditor)="updateChoosedByEditor($event)"
+    (selectedYearOrder)="updateYearDescendin($event)"
+  />
 
-  <app-poster-grid />
+    <app-poster-grid
+      [matchBySearch]="matchBySearch"
+      [matchByCountry]="matchByCountry"
+      [matchByGenre]="matchByGenre"
+      [matchByLanguage]="matchByLanguage"
+      [matchByDecade]="matchByDecade"
+      [isChoosedByEditor]="isChoosedByEditor"
+      [yearDescendin]="yearDescendin"
+    />
 </main>
