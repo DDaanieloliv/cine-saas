@@ -12,6 +12,7 @@ export class BrowseFilters {
 
   protected showClearButtom() {
     this.shouldClearFilters = !this.shouldClearFilters;
+    this.byEditorChoosed(this.shouldClearFilters);
   }
 
   @Input('preset')
@@ -21,23 +22,25 @@ export class BrowseFilters {
     }
   }
 
-  public filterChange(filter_name: string, event: Event) {
-    const select = event.target as HTMLSelectElement;
-
+  public filterChange(filter_name: string, elementValue: string) {
     switch (filter_name) {
-      case 'By Country':
+      case 'Country':
+        this.countrySelected(elementValue);
         break;
-      case 'By Genre':
+      case 'Genre':
+        this.genreSelected(elementValue);
         break;
-      case 'By Language':
+      case 'Language':
+        this.languageSelected(elementValue);
         break;
-      case 'By Decade':
+      case 'Decade':
+        this.decadeSelected(elementValue)
         break;
     }
   }
 
   @Output()
-  public searchContent: EventEmitter<string> = new EventEmitter<string>();
+  public searchContentChange: EventEmitter<string> = new EventEmitter<string>();
   @Output()
   public selectedCountry: EventEmitter<string> = new EventEmitter<string>();
   @Output()
@@ -49,7 +52,30 @@ export class BrowseFilters {
   @Output()
   public isChoosedByEditor: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
-  public selectedYearOrder: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public selectedYearOrder: EventEmitter<string> = new EventEmitter<string>();
+
+
+  protected contentSearch(content: string) {
+    this.searchContentChange.emit(content);
+  }
+  protected countrySelected(country: string) {
+    this.selectedCountry.emit(country);
+  }
+  protected genreSelected(genre: string) {
+    this.selectedGenre.emit(genre);
+  }
+  protected languageSelected(language: string) {
+    this.selectedLanguage.emit(language);
+  }
+  protected decadeSelected(decade: string) {
+    this.selectedDecade.emit(decade);
+  }
+  protected byEditorChoosed(byEditor: boolean) {
+    this.isChoosedByEditor.emit(byEditor);
+  }
+  protected yearOrderSelected(yearOrder: string) {
+    this.selectedYearOrder.emit(yearOrder);
+  }
 
   protected activateDesiredPicks() {
     this.shouldClearFilters = true;
@@ -58,7 +84,7 @@ export class BrowseFilters {
   protected filter_select = [
     {
       id: 1,
-      filter_name: 'By Country',
+      filter_name: 'Country',
       options: [
         { id: 1, option: "All Countries", },
         { id: 2, option: "Brazil", },
@@ -66,7 +92,7 @@ export class BrowseFilters {
     },
     {
       id: 2,
-      filter_name: 'By Genre',
+      filter_name: 'Genre',
       options: [
         { id: 1, option: "All Genres", },
         { id: 2, option: "Documentary", },
@@ -74,7 +100,7 @@ export class BrowseFilters {
     },
     {
       id: 3,
-      filter_name: 'By Language',
+      filter_name: 'Language',
       options: [
         { id: 1, option: "All Languages", },
         { id: 2, option: "Portugese(Brazil)", },
@@ -82,7 +108,7 @@ export class BrowseFilters {
     },
     {
       id: 4,
-      filter_name: 'By Decade',
+      filter_name: 'Decade',
       options: [
         { id: 1, option: "All Decades", },
         { id: 2, option: "1999s", },

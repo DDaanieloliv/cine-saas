@@ -28,7 +28,7 @@ export class BrowsePage {
   public matchByLanguage: string = '';
   public matchByDecade: string = '';
   public isChoosedByEditor: boolean = false;
-  public yearDescendin: boolean = true;
+  public yearDescendin: string = '';
 
 
   public updateBySearch(value: string) {
@@ -49,7 +49,7 @@ export class BrowsePage {
   public updateChoosedByEditor(value: boolean) {
     this.isChoosedByEditor = value;
   }
-  public updateYearDescendin(value: boolean) {
+  public updateYearDescendin(value: string) {
     this.yearDescendin = value;
   }
 }

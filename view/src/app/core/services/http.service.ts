@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Poster } from '../model/poster.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class HttpService {
     return this.http.get<T>(url);
   }
 
-  mockData(): any {
+  mockData(): Poster[] {
     return [
       {
         id: 1,

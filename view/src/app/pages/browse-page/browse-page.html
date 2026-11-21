@@ -3,7 +3,7 @@
 
   <app-browse-filters
     [preset]="preset"
-    (searchContent)="updateBySearch($event)"
+    (searchContentChange)="updateBySearch($event)"
     (selectedCountry)="updateByCountry($event)"
     (selectedGenre)="updateByGenre($event)"
     (selectedLanguage)="updateByLanguage($event)"

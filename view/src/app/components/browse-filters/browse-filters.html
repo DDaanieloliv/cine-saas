@@ -1,11 +1,19 @@
 <div class="browse_filters" id="">
-  <input class="filter_search" type="" name="search" value="Search...">
+  <input
+    #searchElement
+    class="filter_search"
+    type=""
+    name="search"
+    placeholder="Search..."
+    (input)="contentSearch(searchElement.value)"
+  >
   <div class="search_settings" id="">
     @for (filter of filter_select; track filter.id) {
-      <select (change)="filterChange(filter.filter_name, $event)">
+      <select #selectElement
+        (change)="filterChange(filter.filter_name, selectElement.value)"
+      >
         @for (option of filter.options; track option.id) {
         <option
-          [value]="option.option"
           value="{{option.option}}"
         >
           {{option.option}}
@@ -33,8 +41,8 @@
     <div class="spacing" id=""></div>
     <label for="">  Sort By
       <select>
-        <option value="year">Year ↓</option>
-        <option value="year">Year ↑</option>
+        <option value="desc">Year ↓</option>
+        <option value="asc">Year ↑</option>
       </select>
     </label>
   </div>
