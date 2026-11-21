@@ -79,6 +79,7 @@ export class BrowseFilters {
 
   protected activateDesiredPicks() {
     this.shouldClearFilters = true;
+    this.byEditorChoosed(true)
   }
 
   protected filter_select = [

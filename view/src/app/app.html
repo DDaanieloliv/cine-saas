@@ -1,4 +1,6 @@
-<app-bar />
+<app-bar
+  (toSearch)="updateBrowseSearchContent($event)"
+/>
 
 <main>
   <router-outlet />

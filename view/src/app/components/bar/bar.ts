@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Output } from '@angular/core';
 import { NavigationOption } from '../navigation-option/navigation-option';
 
 @Component({
@@ -17,6 +17,13 @@ export class Bar {
 
   protected launchInputElement(): void {
     this.showInput = !this.showInput;
+  }
+
+  @Output()
+  public toSearch: EventEmitter<string> = new EventEmitter<string>();
+
+  protected searchInBrowsePage(value: string) {
+    this.toSearch.emit(value);
   }
 
   @HostBinding('class.is_scrolled')

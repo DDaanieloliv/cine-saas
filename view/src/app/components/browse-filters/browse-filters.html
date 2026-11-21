@@ -40,7 +40,7 @@
     </button>
     <div class="spacing" id=""></div>
     <label for="">  Sort By
-      <select>
+      <select #selectElement (change)="yearOrderSelected(selectElement.value)">
         <option value="desc">Year ↓</option>
         <option value="asc">Year ↑</option>
       </select>

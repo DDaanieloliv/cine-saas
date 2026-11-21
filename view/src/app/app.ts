@@ -24,4 +24,10 @@ export class App {
         }
       });
   }
+
+  public toSearchInBrowsePage: string = '';
+
+  public updateBrowseSearchContent(value: string) {
+    this.toSearchInBrowsePage = value;
+  }
 }
