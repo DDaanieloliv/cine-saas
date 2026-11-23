@@ -16,6 +16,10 @@ export class PosterGrid {
   }
 
   @Input()
+  public contentTheme: string = '';
+  @Input()
+  public tabSelectedOption: string = '';
+  @Input()
   public matchBySearch: string = '';
   @Input()
   public matchByCountry: string = '';
@@ -34,11 +38,14 @@ export class PosterGrid {
     const normalize = (value: string): string =>
     value.trim().toLowerCase();
 
+    const type = normalize(this.tabSelectedOption);
     const search = normalize(this.matchBySearch);
     const country = normalize(this.matchByCountry);
     const genre = normalize(this.matchByGenre);
     const language = normalize(this.matchByLanguage);
     const decade = normalize(this.matchByDecade);
+
+    const hasTypeFilter = type !== '' && type !== 'all';
 
     const hasCountryFilter =
       country !== '' && country !== 'all countries';
@@ -63,6 +70,10 @@ export class PosterGrid {
         return this.contents()
         .filter((content) => {
           const contentYear = Number(content.year);
+
+          const matchesType =
+            !hasTypeFilter ||
+            normalize(content.type) === type;
 
           const matchesSearch =
             !search ||
@@ -94,6 +105,7 @@ export class PosterGrid {
             content.editor_pick;
 
           return (
+            matchesType &&
             matchesSearch &&
               matchesCountry &&
               matchesGenre &&

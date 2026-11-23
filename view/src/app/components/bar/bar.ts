@@ -1,4 +1,13 @@
-import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { NavigationOption } from '../navigation-option/navigation-option';
 
 @Component({
@@ -10,21 +19,43 @@ import { NavigationOption } from '../navigation-option/navigation-option';
 export class Bar {
 
   constructor(
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private cdr: ChangeDetectorRef
   ) {}
 
   protected showInput = false;
 
+  protected focusInputElement() {
+    this.inputElement.nativeElement.focus();
+  }
+
   protected launchInputElement(): void {
     this.showInput = !this.showInput;
+    if (this.showInput) {
+      this.cdr.detectChanges();
+      this.focusInputElement()
+      this.onConfirmSearch()
+    }
+  }
+
+  protected searchInBrowsePage(value: string) {
+    this.toSearch.emit(value);
+  }
+
+  protected onConfirmSearch() {
+    const element = document.querySelector<HTMLInputElement>('#inputElement');
+    element?.addEventListener('keyup', (event) => {
+      if (event.key === "Enter") {
+        this.searchInBrowsePage(element.value)
+      }
+    });
   }
 
   @Output()
   public toSearch: EventEmitter<string> = new EventEmitter<string>();
 
-  protected searchInBrowsePage(value: string) {
-    this.toSearch.emit(value);
-  }
+  @ViewChild('inputElement')
+  protected inputElement!: ElementRef<HTMLInputElement>;
 
   @HostBinding('class.is_scrolled')
   protected is_scrolled = false;

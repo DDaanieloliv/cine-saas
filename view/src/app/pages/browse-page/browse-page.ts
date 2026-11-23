@@ -16,12 +16,16 @@ export class BrowsePage {
 
   protected preset: string | null = null;
 
+  protected searchStr: string | null = null;
+
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
       this.preset = params.get('preset');
+      this.searchStr = params.get('search');
     })
   }
 
+  public tabSelected: string = '';
   public matchBySearch: string = '';
   public matchByCountry: string = '';
   public matchByGenre: string = '';
@@ -30,7 +34,9 @@ export class BrowsePage {
   public isChoosedByEditor: boolean = false;
   public yearDescendin: string = '';
 
-
+  public updateTabOptionSelected(value: string) {
+    this.tabSelected = value;
+  }
   public updateBySearch(value: string) {
     this.matchBySearch = value;
   }

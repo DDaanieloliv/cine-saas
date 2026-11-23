@@ -1,6 +1,8 @@
 
 import { Component } from '@angular/core';
 
+// TODO: re-arrange this file to match with the films
+// and series which we'll expose by a resctive collection
 const COLLECTION_PALETTES = {
   sage: {
     background: '#DCE6D5',

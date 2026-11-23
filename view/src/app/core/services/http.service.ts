@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Poster } from '../model/poster.model';
 
+type MockPoster = Omit<Poster, 'year' | 'byCollection'> & {
+  year: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -14,8 +18,81 @@ export class HttpService {
     return this.http.get<T>(url);
   }
 
+  private readonly collectionAssignments: Record<number, string[]> = {
+    1: ['Beyond the Stars'],
+    2: ['Whispers & Secrets'],
+    3: ['Beyond the Stars'],
+    4: ['Whispers & Secrets', 'Cold Case Files'],
+    5: ['Organized Crime'],
+    6: ['Love & Longing'],
+    7: ['Beyond the Stars'],
+    8: ['Beyond the Stars', 'Nightfall'],
+    9: ['Tender Hearts'],
+    10: ['Otherworldly Dreams'],
+    11: ['Historical Worlds', 'Quiet Journeys'],
+    12: ['Historical Worlds'],
+    13: ['Frontier Stories'],
+    14: ['Echoes of Conflict'],
+    15: ['Whispers & Secrets'],
+    16: ['Love & Longing'],
+    17: ['Organized Crime', 'Cold Case Files'],
+    18: ['Love & Longing'],
+    19: ['Historical Worlds', 'Echoes of Conflict'],
+    20: ['Love & Longing', 'Tender Hearts'],
+    21: ['Cold Case Files'],
+    22: ['Whispers & Secrets'],
+    23: ['Nightfall'],
+    24: ['Love & Longing'],
+    25: ['Lighthearted Escapes'],
+    26: ['Organized Crime'],
+    27: ['Otherworldly Dreams'],
+    28: ['Organized Crime'],
+    29: ['Cold Case Files'],
+    30: ['The Unknown Signal'],
+    31: ['Growing Pains'],
+    32: ['The Unknown Signal'],
+    33: ['Love & Longing'],
+    34: ['Growing Pains'],
+    35: ['Whispers & Secrets'],
+    36: ['Otherworldly Dreams'],
+    37: ['Shadows of the Past'],
+    38: ['Organized Crime'],
+    39: ['Whispers & Secrets'],
+    40: ['Otherworldly Dreams'],
+    41: ['Frontier Stories'],
+    42: ['Love & Longing'],
+    43: ['Historical Worlds', 'Echoes of Conflict'],
+    44: ['Frontier Stories'],
+    45: ['Otherworldly Dreams'],
+    46: ['Shadows of the Past'],
+    47: ['Nightfall'],
+    48: ['Love & Longing'],
+    49: ['The Unknown Signal'],
+    50: ['Love & Longing'],
+    51: ['Organized Crime'],
+    52: ['Shadows of the Past', 'Tender Hearts'],
+    53: ['Beyond the Stars', 'The Unknown Signal'],
+    54: ['Whispers & Secrets'],
+    55: ['Organized Crime', 'Cold Case Files'],
+    56: ['Historical Worlds'],
+    57: ['Nightfall'],
+    58: ['Whispers & Secrets'],
+    59: ['The Unknown Signal'],
+    60: ['Quiet Journeys', 'Tender Hearts'],
+    61: ['The Unknown Signal'],
+    62: ['Lighthearted Escapes'],
+    63: ['Otherworldly Dreams'],
+    64: ['Love & Longing'],
+    65: ['Shadows of the Past'],
+    66: ['Frontier Stories'],
+    67: ['Otherworldly Dreams'],
+    68: ['Nightfall'],
+    69: ['Frontier Stories', 'Quiet Journeys'],
+    70: ['Tender Hearts'],
+  };
+
   mockData(): Poster[] {
-    return [
+    const contents: MockPoster[] = [
       {
         id: 1,
         poster_title: "The Last Horizon",
@@ -717,7 +794,12 @@ export class HttpService {
         editor_pick: true,
       },
     ];
-    ;
+
+    return contents.map((content): Poster => ({
+      ...content,
+      year: Number(content.year),
+      byCollection: this.collectionAssignments[content.id] ?? [],
+    }));
   }
 
   post<T>(url: string, body: any): Observable<T> {

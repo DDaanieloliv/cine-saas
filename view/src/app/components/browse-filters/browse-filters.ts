@@ -8,12 +8,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class BrowseFilters {
 
-  protected shouldClearFilters = false;
+  protected browseSearch = '';
 
-  protected showClearButtom() {
-    this.shouldClearFilters = !this.shouldClearFilters;
-    this.byEditorChoosed(this.shouldClearFilters);
-  }
+  protected shouldClearFilters = false;
 
   @Input('preset')
   set preset(value: string | null) {
@@ -22,21 +19,10 @@ export class BrowseFilters {
     }
   }
 
-  public filterChange(filter_name: string, elementValue: string) {
-    switch (filter_name) {
-      case 'Country':
-        this.countrySelected(elementValue);
-        break;
-      case 'Genre':
-        this.genreSelected(elementValue);
-        break;
-      case 'Language':
-        this.languageSelected(elementValue);
-        break;
-      case 'Decade':
-        this.decadeSelected(elementValue)
-        break;
-    }
+  @Input()
+  set searchStr(value: string | null) {
+    this.browseSearch = value ?? '';
+    this.contentSearch(value ?? '');
   }
 
   @Output()
@@ -55,8 +41,30 @@ export class BrowseFilters {
   public selectedYearOrder: EventEmitter<string> = new EventEmitter<string>();
 
 
-  protected contentSearch(content: string) {
-    this.searchContentChange.emit(content);
+  public filterChange(filter_name: string, elementValue: string) {
+    switch (filter_name) {
+      case 'Country':
+        this.countrySelected(elementValue);
+        break;
+      case 'Genre':
+        this.genreSelected(elementValue);
+        break;
+      case 'Language':
+        this.languageSelected(elementValue);
+        break;
+      case 'Decade':
+        this.decadeSelected(elementValue)
+        break;
+    }
+  }
+
+  protected showClearButtom() {
+    this.shouldClearFilters = !this.shouldClearFilters;
+    this.byEditorChoosed(this.shouldClearFilters);
+  }
+
+  protected contentSearch(value: string) {
+    this.searchContentChange.emit(value);
   }
   protected countrySelected(country: string) {
     this.selectedCountry.emit(country);

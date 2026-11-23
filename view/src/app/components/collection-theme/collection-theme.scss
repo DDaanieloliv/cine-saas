@@ -1,0 +1,29 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  padding-top: 48px;
+
+  .label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: var(--font-editorial-alt);
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .about_collection {
+    font-family: var(--font-editorial-alt);
+    color: var(--gray);
+    font-size: 15px;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+}

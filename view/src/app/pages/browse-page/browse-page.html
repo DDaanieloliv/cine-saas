@@ -1,8 +1,11 @@
 <main class="container" id="">
-  <app-browse-tabs />
+  <app-browse-tabs
+    (tabOption)="updateTabOptionSelected($event)"
+  />
 
   <app-browse-filters
     [preset]="preset"
+    [searchStr]="searchStr"
     (searchContentChange)="updateBySearch($event)"
     (selectedCountry)="updateByCountry($event)"
     (selectedGenre)="updateByGenre($event)"
@@ -13,6 +16,7 @@
   />
 
     <app-poster-grid
+      [tabSelectedOption]="tabSelected"
       [matchBySearch]="matchBySearch"
       [matchByCountry]="matchByCountry"
       [matchByGenre]="matchByGenre"

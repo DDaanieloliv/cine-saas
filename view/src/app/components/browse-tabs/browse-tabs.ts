@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   imports: [],
@@ -12,5 +12,9 @@ export class BrowseTabs {
 
   protected tabSelected(value: string) :void  {
     this.selectedTab = value;
+    this.tabOption.emit(this.selectedTab);
   }
+
+  @Output()
+  public tabOption: EventEmitter<string> = new EventEmitter<string>;
 }

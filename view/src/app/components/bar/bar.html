@@ -10,12 +10,12 @@
     <div class="search_container">
       <input
          #inputElement
+         id="inputElement"
          [class.visible]="showInput"
          type=""
          name="Search..."
          placeholder="Search..."
-         value=""
-         (keydown.enter)="searchInBrowsePage(inputElement.value)">
+         >
      <form>
         <i
           class="bi bi-search"

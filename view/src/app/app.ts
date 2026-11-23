@@ -25,9 +25,11 @@ export class App {
       });
   }
 
-  public toSearchInBrowsePage: string = '';
-
-  public updateBrowseSearchContent(value: string) {
-    this.toSearchInBrowsePage = value;
+  public browseSearchContent(value: string) {
+    this.r.navigate(['/browse'], {
+      queryParams: {
+        search: value === null ? '' : value,
+      }
+    });
   }
 }
