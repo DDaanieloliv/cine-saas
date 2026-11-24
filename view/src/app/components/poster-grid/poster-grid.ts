@@ -44,6 +44,7 @@ export class PosterGrid {
     const genre = normalize(this.matchByGenre);
     const language = normalize(this.matchByLanguage);
     const decade = normalize(this.matchByDecade);
+    const theme = normalize(this.contentTheme);
 
     const hasTypeFilter = type !== '' && type !== 'all';
 
@@ -58,6 +59,8 @@ export class PosterGrid {
 
     const hasDecadeFilter =
       decade !== '' && decade !== 'all decades';
+
+    const hasThemeFilter = theme !== '';
 
     const decadeStart = hasDecadeFilter
       ? Number(decade.replace(/s$/i, ''))
@@ -104,14 +107,21 @@ export class PosterGrid {
             !this.isChoosedByEditor ||
             content.editor_pick;
 
+          const matchesTheme =
+            !hasThemeFilter ||
+            content.byCollection.some(
+              (collection) => normalize(collection).includes(theme)
+          );
+
           return (
             matchesType &&
-            matchesSearch &&
+              matchesSearch &&
               matchesCountry &&
               matchesGenre &&
               matchesLanguage &&
               matchesDecade &&
-              matchesEditor
+              matchesEditor &&
+              matchesTheme
           );
         })
         .sort((a, b) => {

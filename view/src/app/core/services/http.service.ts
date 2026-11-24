@@ -18,6 +18,11 @@ export class HttpService {
     return this.http.get<T>(url);
   }
 
+  /**
+   * Associa cada poster às coleções editoriais originais.
+   * Os nomes são mantidos aqui como identificadores legados e convertidos
+   * para os nomes exibidos em COLLECTION_DEFINITIONS.
+   */
   private readonly collectionAssignments: Record<number, string[]> = {
     1: ['Beyond the Stars'],
     2: ['Whispers & Secrets'],
@@ -89,6 +94,64 @@ export class HttpService {
     68: ['Nightfall'],
     69: ['Frontier Stories', 'Quiet Journeys'],
     70: ['Tender Hearts'],
+  };
+
+  /** Conversão dos nomes antigos para os nomes atuais das coleções. */
+  private readonly collectionAliases: Record<string, string> = {
+    'Beyond the Stars': 'High-Tension Thrillers',
+    'Whispers & Secrets': 'Mystery Stories',
+    'Organized Crime': 'Organised Crime',
+    'Echoes of Conflict': 'Historical Dramas',
+    'Love & Longing': 'Romantic Stories',
+    'Historical Worlds': 'Historical Dramas',
+    'Lighthearted Escapes': 'Summer Times',
+    'Cold Case Files': 'Crime Chronicles',
+    'Shadows of the Past': 'Noir Classics',
+    'Frontier Stories': 'World Cinema',
+    'Otherworldly Dreams': 'Dark Fiction',
+    'Growing Pains': 'Coming of Age',
+    'Tender Hearts': 'Films That Touch Your Heart',
+    'The Unknown Signal': 'High-Tension Thrillers',
+    'Nightfall': 'Dark Fiction',
+    'Quiet Journeys': 'Independent Films',
+  };
+
+  /**
+   * Associações complementares presentes na versão atual dos dados:
+   * coleções que não faziam parte do conjunto de nomes legados.
+   */
+  private readonly additionalCollectionAssignments: Record<number, string[]> = {
+    2: ['Modern Classics', 'European Cinema'],
+    4: ['European Cinema'],
+    5: ['European Cinema'],
+    11: ['Modern Classics', 'European Cinema'],
+    12: ['Modern Classics', 'European Cinema'],
+    14: ['European Cinema'],
+    18: ['Modern Classics', 'European Cinema'],
+    19: ['Modern Classics', 'European Cinema'],
+    21: ['Nordic Series'],
+    22: ['Modern Classics'],
+    23: ['European Cinema'],
+    30: ['European Cinema'],
+    33: ['Modern Classics', 'European Cinema'],
+    35: ['Nordic Series', 'European Cinema'],
+    37: ['European Cinema'],
+    38: ['Modern Classics'],
+    39: ['European Cinema'],
+    40: ['European Cinema'],
+    43: ['European Cinema'],
+    46: ['European Cinema'],
+    47: ['Nordic Series'],
+    50: ['Modern Classics', 'European Cinema'],
+    54: ['European Cinema'],
+    55: ['European Cinema'],
+    56: ['Modern Classics'],
+    58: ['Modern Classics', 'European Cinema'],
+    59: ['European Cinema'],
+    62: ['Modern Classics'],
+    64: ['European Cinema'],
+    65: ['European Cinema'],
+    68: ['Modern Classics', 'European Cinema'],
   };
 
   mockData(): Poster[] {
@@ -795,11 +858,28 @@ export class HttpService {
       },
     ];
 
-    return contents.map((content): Poster => ({
-      ...content,
-      year: Number(content.year),
-      byCollection: this.collectionAssignments[content.id] ?? [],
-    }));
+    return contents.map((content): Poster => {
+      const assignedCollections =
+        this.collectionAssignments[content.id] ?? [];
+
+      const mappedCollections = assignedCollections.map(
+        (collection) => this.collectionAliases[collection] ?? collection
+      );
+
+      const additionalCollections =
+        this.additionalCollectionAssignments[content.id] ?? [];
+
+      return {
+        ...content,
+        year: Number(content.year),
+        byCollection: [
+          ...new Set([
+            ...mappedCollections,
+            ...additionalCollections,
+          ]),
+        ],
+      };
+    });
   }
 
   post<T>(url: string, body: any): Observable<T> {

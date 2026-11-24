@@ -1,12 +1,13 @@
 <div class="collection_grid" id="">
 
-  @for ( collection of collections; track collection.id ) {
+  @for (collection of collections; track collection.id) {
     <div class="backcard_container">
       <div class="back_card0"></div>
       <div class="back_card1"></div>
 
       <a
-        href="/collection-theme"
+        routerLink="/collection-theme"
+        [queryParams]="{theme: collection.name}"
         class="collection_card" id=""
       >
         <div class="collection_card_image" id=""></div>
@@ -20,7 +21,7 @@
         >
           <span class="collection_card_label">collection</span>
           <span class="collection_card_name">{{collection.name}}</span>
-          <span class="collection_card_count">{{collection.count}}</span>
+          <span class="collection_card_count">{{collection.count}} titles</span>
         </div>
       </a>
     </div>
